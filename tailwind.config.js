@@ -15,12 +15,17 @@ module.exports = {
         "rubik-medium": ["Rubik-Medium", "sans-serif"],
         "rubik-extrabold": ["Rubik-ExtraBold", "sans-serif"],
       },
-      colors:{
-        accent:{
-          100:'#F83B01',
-          200:'#F96234'
-        }
-      }
+      colors: {
+        accent: {
+          100: "#F83B01",
+          200: "#F96234",
+        },
+        basic: {
+          100: "#6b7280",
+          200: "##4b5563",
+          300: "#374151",
+        },
+      },
     },
   },
   plugins: [],

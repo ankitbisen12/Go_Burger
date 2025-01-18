@@ -8,14 +8,13 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { Link } from "expo-router";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
 import SignWith from "@/components/utils/SignWith";
 import icons from "@/constants/icons";
 import images from "@/constants/images";
 
-const Login = () => {
+const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const passwordToggleHandler = () => {
@@ -25,10 +24,21 @@ const Login = () => {
   return (
     <SafeAreaView className="h-full">
       <ScrollView contentContainerClassName="bg-white h-full">
-        <View className="p-6 flex ">
-          <Image source={images.Go_Burger} resizeMode="contain" className="w-full h-2/6 opacity-90"/>
-          <View className="py-6">
-            <Text className="text-5xl font-rubik-bold">Login</Text>
+        <View className="p-6 flex">
+          <View className="py-6 mt-20">
+            <Text className="text-5xl font-rubik-bold">Sign Up</Text>
+          </View>
+          <View className="flex flex-row items-center justify-between w-full px-4 rounded-xl  border border-gray-200 py-1 mt-4">
+            <View className="flex-1 flex flex-row items-center justify-start z-50 ">
+              {/* <Entypo name="email" size={20} color="#d4d4d8" /> */}
+              <TextInput
+                //   value={search}
+                placeholder="Your Name"
+                placeholderTextColor="#d4d4d8"
+                //   onChangeText={handleSearch}
+                className="text-lg font-rubik text-zinc-500 ml-1 flex-1 tracking-wide"
+              />
+            </View>
           </View>
           <View className="flex flex-row items-center justify-between w-full px-4 rounded-xl  border border-gray-200 py-1 mt-4">
             <View className="flex-1 flex flex-row items-center justify-start z-50 ">
@@ -71,15 +81,15 @@ const Login = () => {
           <TouchableOpacity className="bg-accent-100 shadow-xl shadow-zinc-600 rounded-full w-full py-4 mt-3">
             <View className="flex flex-row items-center justify-center">
               <Text className="text-xl font-rubik-semibold text-white">
-                Login
+                Sign Up
               </Text>
             </View>
           </TouchableOpacity>
           <View className="flex flex-row justify-center py-6 items-center">
             <Text className="text-gray-600 text-lg font-rubik">
-              Don't have an account?{" "}
+              Already have an account?{" "}
             </Text>
-            <Text className="text-accent-100 text-lg font-rubik"><Link href="/signup">Sign Up</Link></Text>
+            <Text className="text-accent-100 text-lg font-rubik">Login</Text>
           </View>
           <SignWith textStyle="text-basic-200" bgStyle="bg-basic-200" />
           <TouchableOpacity
@@ -103,4 +113,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

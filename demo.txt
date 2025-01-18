@@ -1,0 +1,17 @@
+<View className="flex flex-row justify-center mt-5">
+          <View className="flex flex-col items-center relative mt-5">
+            <Image
+              // source={{ uri: user?.avatar }}
+              source={images.avatar}
+              className="size-44 relative rounded-full"
+            />
+            <TouchableOpacity className="absolute bottom-13 right-2">
+              <Feather name="edit-2" size={24} color="black" />
+            </TouchableOpacity>
+            {/* <Text className="text-2xl font-rubik-bold mt-2">{user?.name}</Text> */}
+            <Text className="text-2xl font-rubik-bold mt-2">Ankit Bisen</Text>
+            <Text className="text-lg font-rubik-medium mt-2">
+              ankitbisen751@gmail.com
+            </Text>
+          </View>
+        </View>

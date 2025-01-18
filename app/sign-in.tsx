@@ -11,6 +11,7 @@ import {
 import images from "@/constants/images";
 import icons from "@/constants/icons";
 import { Link } from "expo-router";
+import SignWith from "@/components/utils/SignWith";
 
 const SignIn = () => {
   return (
@@ -40,16 +41,7 @@ const SignIn = () => {
                 doorstep.
               </Text>
             </View>
-            <View className="flex-row items-center justify-center mt-4">
-              {/* Left line */}
-              <View className="flex-1 h-0.5 bg-accent-200" />
-              {/* Text */}
-              <Text className="mx-2 text-accent-200 text-lg font-rubik-semibold">
-                Sign in with
-              </Text>
-              {/* Right line */}
-              <View className="flex-1 h-0.5 bg-accent-200" />
-            </View>
+            <SignWith textStyle="text-accent-200" bgStyle="bg-accent-200"/>
             <TouchableOpacity className="bg-black shadow-xl shadow-zinc-600 rounded-full w-full py-4 mt-3">
               <View className="flex flex-row items-center justify-center">
                 <Text className="text-lg font-rubik-semibold text-white">
