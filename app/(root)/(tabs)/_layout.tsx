@@ -1,6 +1,6 @@
 import TabIcon from "@/components/utils/TabIcon";
 import icons from "@/constants/icons";
-import { Stack, Slot, Tabs } from "expo-router";
+import { Tabs } from "expo-router";
 
 export default function TabsLayout() {
   return (
@@ -11,7 +11,6 @@ export default function TabsLayout() {
           backgroundColor: "#F83B01",
           position: "absolute",
           minHeight: 70,
-          
         },
       }}
     >

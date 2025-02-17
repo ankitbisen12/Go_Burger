@@ -12,5 +12,5 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-, "utils/util.ts"  ]
+, "utils/util.ts", "features/Beverages/BeveragesAPI.js", "features/Beverages/BeveragesSlice.js", "features/auth/authAPI.js", "features/auth/authSlice.ts"  ]
 }
