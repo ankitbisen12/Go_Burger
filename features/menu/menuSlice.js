@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchAllMenu, fetchMenuById, createMenu, updateMenu } from "./mealAPI";
+import { fetchAllMenu, fetchMenuById, createMenu, updateMenu } from "./menuAPI";
 
 const initialState = {
   menus: [],
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const fetchAllMenusAsync = createAsyncThunk(
-  "meal/fetchAllMenu",
+  "menu/fetchAllMenu",
   async () => {
     const response = await fetchAllMenu();
     return response.data;
@@ -16,7 +16,7 @@ export const fetchAllMenusAsync = createAsyncThunk(
 );
 
 export const fetchMenuByIdAsync = createAsyncThunk(
-  "meal/fetchMenuById",
+  "menu/fetchMenuById",
   async (id) => {
     const response = await fetchMenuById(id);
     return response.data;
@@ -24,25 +24,25 @@ export const fetchMenuByIdAsync = createAsyncThunk(
 );
 
 export const createMenuAsync = createAsyncThunk(
-  "meal/createMenu",
-  async (meal) => {
-    const response = await createMenu(meal);
+  "menu/createMenu",
+  async (menu) => {
+    const response = await createMenu(menu);
 
     return response.data;
   }
 );
 
 export const updateMenuAsync = createAsyncThunk(
-  "meal/updateMenu",
-  async (meal) => {
-    const response = await updateMenu(meal);
+  "menu/updateMenu",
+  async (menu) => {
+    const response = await updateMenu(menu);
 
     return response.data;
   }
 );
 
-export const mealSlice = createSlice({
-  name: "meal",
+export const menuSlice = createSlice({
+  name: "menu",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -52,7 +52,7 @@ export const mealSlice = createSlice({
       })
       .addCase(fetchAllMenusAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.menus = action.payload;
+        state.menus = action.payload.menu;
       })
       .addCase(fetchMenuByIdAsync.pending, (state) => {
         state.status = "loading";
@@ -81,8 +81,8 @@ export const mealSlice = createSlice({
   },
 });
 
-export const selectMenu = (state) => state.meal.menus;
-export const selectedMenu = (state) => state.meal.selectMenu;
-export const selectStatus = (state) => state.meal.status;
+export const selectMenu = (state) => state.menu.menus;
+export const selectedMenu = (state) => state.menu.selectMenu;
+export const selectStatus = (state) => state.menu.status;
 
-export default mealSlice.reducer;
+export default menuSlice.reducer;

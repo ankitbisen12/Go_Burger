@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 //for creating user
 export function createUser(userData) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:4000/api/v1/auth/signup", {
+    const response = await fetch("http://192.168.181.101:4000/api/v1/auth/signup", {
       method: "POST",
       body: JSON.stringify(userData),
       headers: { "content-type": "application/json" },
@@ -18,14 +18,11 @@ export function loginUser(loginInfo) {
   return new Promise(async (resolve, reject) => {
     try {
       console.log("AuthApi is Running");
-      const response = await fetch(
-        "http://192.168.181.101:4000/api/v1/auth/login",
-        {
-          method: "POST",
-          body: JSON.stringify(loginInfo),
-          headers: { "content-type": "application/json" },
-        }
-      );
+      const response = await fetch("http://192.168.181.101:4000/api/v1/auth/login", {
+        method: "POST",
+        body: JSON.stringify(loginInfo),
+        headers: { "content-type": "application/json" },
+      });
       console.log("Runn");
       console.log("Response:", response);
       if (response.ok) {
@@ -45,17 +42,14 @@ export function loginUser(loginInfo) {
 
 export function checkAuth() {
   return new Promise(async (resolve, reject) => {
-    const token= await  AsyncStorage.getITem("token");
+    const token = await AsyncStorage.getITem("token");
     try {
-      const response = await fetch(
-        "http://192.168.181.101:4000/api/v1/auth/check",
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // ✅ Send token in headers
-          },
-        }
-      );
+      const response = await fetch("http://192.168.181.101:4000/api/v1/auth/check", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // ✅ Send token in headers
+        },
+      });
       console.log("CheckAuth api running");
       if (response.ok) {
         const data = await response.json();
@@ -74,7 +68,7 @@ export function checkAuth() {
 export function signOut() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch("http://localhost:4000/api/v1/auth/logout");
+      const response = await fetch("http://192.168.181.101:4000/api/v1/auth/logout");
       // console.log(response);
       if (response.ok) {
         // const data = await response.json();

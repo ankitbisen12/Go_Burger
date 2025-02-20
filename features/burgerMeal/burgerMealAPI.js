@@ -1,9 +1,10 @@
 export function fetchAllBurgerMeal() {
   return new Promise(async (resolve) => {
     //TODO:we will not hard-coded server URL here
-    const response = await fetch("http://localhost:3000/api/v1/burgerMeal");
+    const response = await fetch("http://192.168.181.101:4000/api/v1/burgerMeal");
     //TODO: Server will filter deleted products.
     const data = await response.json();
+    // console.log("dffdygdyg",data);
     resolve({ data });
   });
 }
@@ -11,7 +12,7 @@ export function fetchAllBurgerMeal() {
 export function fetchBurgerMealById(id) {
   return new Promise(async (resolve) => {
     const response = await fetch(
-      "http://localhost:3000/api/v1/burgerMeal/" + id
+      "http://192.168.181.101:4000/api/v1/burgerMeal/" + id
     );
 
     const data = response.json();
@@ -21,7 +22,7 @@ export function fetchBurgerMealById(id) {
 
 export function createBurgerMeal(burgerMeal) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:3000/api/v1/burgerMeal", {
+    const response = await fetch("http://192.168.181.101:4000/api/v1/burgerMeal", {
       method: "POST",
       body: JSON.stringify(burgerMeal),
       headers: { "content-type": "application/json" },
@@ -35,7 +36,7 @@ export function createBurgerMeal(burgerMeal) {
 export function updateBurgerMeal(update) {
   return new Promise(async (resolve) => {
     const response = await fetch(
-      "http://localhost:3000/api/v1/burgerMeal/" + update.id,
+      "http://192.168.181.101:4000/api/v1/burgerMeal/" + update.id,
       {
         method: "PATCH",
         body: JSON.stringify(update),

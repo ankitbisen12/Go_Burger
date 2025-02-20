@@ -57,7 +57,7 @@ export const burgerMealSlice = createSlice({
       })
       .addCase(fetchAllBurgerMealsAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.burgerMeals = action.payload;
+        state.burgerMeals = action.payload.burgerMeal;
       })
       .addCase(fetchMealByIdAsync.pending, (state) => {
         state.status = "loading";

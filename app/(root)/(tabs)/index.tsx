@@ -5,8 +5,13 @@ import Menu, { FeaturedMenu } from "@/components/menu/menu";
 import Slider from "@/components/utils/Slider";
 import MealCard from "@/components/UI/MealCard";
 import Promo from "@/components/Promo";
+import { useSelector } from "react-redux";
+import { selectMenu } from "@/features/menu/menuSlice";
 
 const Index = () => {
+  const menu = useSelector(selectMenu);
+  // console.log("menu", menu);
+
   return (
     <SafeAreaView className="h-full">
       <FlatList
@@ -31,7 +36,7 @@ const Index = () => {
                 </Text>
               </View>
               <FlatList
-                data={MENUItems.slice(0, 2)}
+                data={menu.slice(0, 2)}
                 renderItem={({ item }) => <Menu item={item} />}
                 keyExtractor={(item) => item.id.toString()}
                 bounces={false}
@@ -39,7 +44,7 @@ const Index = () => {
                 columnWrapperClassName="flex gap-3 px-2"
               />
               <FlatList
-                data={MENUItems.slice(2)}
+                data={menu.slice(2)}
                 renderItem={({ item }) => <FeaturedMenu item={item} />}
                 keyExtractor={(item) => item.id.toString()}
                 bounces={false}

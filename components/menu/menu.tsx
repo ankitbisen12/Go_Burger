@@ -15,9 +15,8 @@ export const FeaturedMenu = ({ item, onPress }: MenuProps) => {
       className="flex-1 w-full mt-4 px-3 py-2 rounded-xl border border-gray-100 bg-white shadow-lg shadow-black-100/70 relative"
     >
       <Image
-        source={item.image}
-        className="w-full h-28 rounded-lg"
-        resizeMode="contain"
+        source={{ uri: `data:image/png;base64,${item.image}` }}
+        className="w-full h-40 rounded-lg"
       />
       <View className="flex flex-col mt-2">
         <Text className="text-lg text-center font-rubik-bold text-black-300">
@@ -34,10 +33,14 @@ const Menu = ({ item, onPress }: MenuProps) => {
       onPress={onPress}
       className="flex-1 w-full mt-4 px-3 py-2 rounded-xl bg-white shadow-lg shadow-black-100/70 relative"
     >
-      <Image
+      {/* <Image
         source={item.image}
         className="w-full h-40 rounded-lg"
         resizeMode="contain"
+      /> */}
+      <Image
+        source={{ uri: `data:image/png;base64,${item.image}` }}
+        className="w-full h-40 rounded-lg"
       />
       <View className="flex flex-col mt-2">
         <Text className="text-xl text-center font-rubik-bold text-black-300">

@@ -8,8 +8,8 @@ import { StatusBar } from "expo-status-bar";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "../store/store";
 import { checkAuthAsync, selectLoggedInUser } from "../features/auth/authSlice";
-import { fetchItemsByUserIdAsync } from "../features/cart/cartSlice";
-import { fetchLoggedInUserAsync} from "../features/user/userSlice";
+import { fetchCartItemsByUserIdAsync } from "../features/cart/cartSlice";
+import { fetchLoggedInUserAsync } from "../features/user/userSlice";
 import type { AppDispatch } from "../store/store";
 
 function RootLayoutContent() {
@@ -41,12 +41,11 @@ function RootLayoutContent() {
 
   useEffect(() => {
     if (user) {
-      
-      dispatch(fetchItemsByUserIdAsync());
+      dispatch(fetchCartItemsByUserIdAsync());
       //we can get req.user by token on backend so no need to given in front-end
       dispatch(fetchLoggedInUserAsync());
     }
-  }, [dispatch,user]);
+  }, [dispatch, user]);
 
   useEffect(() => {
     console.log("loggedin token", user);
@@ -69,7 +68,7 @@ function RootLayoutContent() {
   return (
     <React.Fragment>
       <StatusBar style="dark" />
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }} />
     </React.Fragment>
   );
 }

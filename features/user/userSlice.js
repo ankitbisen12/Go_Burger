@@ -54,13 +54,17 @@ export const updateUserAsync = createAsyncThunk(
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchLoggedInUserAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchLoggedInUserAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        //this info can be different or more from loggedIn User info
+        state.userInfo = action.payload;
+      })
       .addCase(fetchLoggedInUserOrdersAsync.pending, (state) => {
         state.status = "loading";
       })
@@ -73,14 +77,6 @@ export const userSlice = createSlice({
         state.status = "loading";
       })
       .addCase(updateUserAsync.fulfilled, (state, action) => {
-        state.status = "idle";
-        //this info can be different or more from loggedIn User info
-        state.userInfo = action.payload;
-      })
-      .addCase(fetchLoggedInUserAsync.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchLoggedInUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
         //this info can be different or more from loggedIn User info
         state.userInfo = action.payload;

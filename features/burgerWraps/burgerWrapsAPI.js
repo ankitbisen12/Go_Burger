@@ -1,7 +1,7 @@
 export function fetchAllBurgerWraps() {
   return new Promise(async (resolve) => {
     //TODO:we will not hard-coded server URL here
-    const response = await fetch("http://localhost:3000/api/v1/burgerWraps");
+    const response = await fetch("http://192.168.181.101:4000/api/v1/burgerWraps");
     //TODO: Server will filter deleted products.
     const data = await response.json();
     resolve({ data });
@@ -11,7 +11,7 @@ export function fetchAllBurgerWraps() {
 export function fetchBurgerWrapsById(id) {
   return new Promise(async (resolve) => {
     const response = await fetch(
-      "http://localhost:3000/api/v1/burgerWraps/" + id
+      "http://192.168.181.101:4000/api/v1/burgerWraps/" + id
     );
 
     const data = response.json();
@@ -21,7 +21,7 @@ export function fetchBurgerWrapsById(id) {
 
 export function createBurgerWraps(desserts) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:3000/api/v1/burgerWraps", {
+    const response = await fetch("http://192.168.181.101:4000/api/v1/burgerWraps", {
       method: "POST",
       body: JSON.stringify(desserts),
       headers: { "content-type": "application/json" },
@@ -35,7 +35,7 @@ export function createBurgerWraps(desserts) {
 export function updateBurgerWraps(update) {
   return new Promise(async (resolve) => {
     const response = await fetch(
-      "http://localhost:3000/api/v1/burgerWraps/" + update.id,
+      "http://192.168.181.101:4000/api/v1/burgerWraps/" + update.id,
       {
         method: "PATCH",
         body: JSON.stringify(update),

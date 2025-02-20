@@ -13,8 +13,11 @@ import images from "@/constants/images";
 import Feather from "@expo/vector-icons/Feather";
 import SettingsItem from "@/components/utils/SettingsItem";
 import { menu, settings } from "@/constants/data";
+import { useSelector } from "react-redux";
+import { selectUserInfo } from "@/features/user/userSlice";
 
 const Profile = () => {
+  const user = useSelector(selectUserInfo);
   const handleLogout = () => {};
 
   return (
@@ -33,13 +36,15 @@ const Profile = () => {
           </View>
           <View className="flex flex-col justify-center ml-4">
             <View className="flex flex-row items-center">
-              <Text className="text-2xl font-rubik-bold mt-1">Ankit Bisen</Text>
+              <Text className="text-2xl font-rubik-bold mt-1">
+                {user?.name}
+              </Text>
               <TouchableOpacity className="ml-2">
                 <Feather name="edit-2" size={18} color="black" />
               </TouchableOpacity>
             </View>
             <Text className="text-lg font-rubik-medium text-gray-500">
-              ankitbisen751@gmail.com
+              {user?.email}
             </Text>
           </View>
         </View>

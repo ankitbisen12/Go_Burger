@@ -15,7 +15,7 @@ const initialState = {
 
 export const addToCartAsync = createAsyncThunk(
   "cart/addToCart",
-  async ({ item}) => {
+  async ({ item }) => {
     // console.log("item",item);
     const response = await addToCart(item);
     // toast.success("Item Added successfully", {
@@ -26,7 +26,7 @@ export const addToCartAsync = createAsyncThunk(
   }
 );
 
-export const fetchItemsByUserIdAsync = createAsyncThunk(
+export const fetchCartItemsByUserIdAsync = createAsyncThunk(
   "cart/fetchItemsByUserId",
   async () => {
     const response = await fetchItemsByUserId();
@@ -87,15 +87,15 @@ export const cartSlice = createSlice({
         state.status = "idle";
         state.items.push(action.payload);
       })
-      .addCase(fetchItemsByUserIdAsync.pending, (state) => {
+      .addCase(fetchCartItemsByUserIdAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchItemsByUserIdAsync.fulfilled, (state, action) => {
+      .addCase(fetchCartItemsByUserIdAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.items = action.payload;
         state.cartLoaded = true;
       })
-      .addCase(fetchItemsByUserIdAsync.rejected, (state, action) => {
+      .addCase(fetchCartItemsByUserIdAsync.rejected, (state, action) => {
         state.status = "idle";
         state.cartLoaded = true;
       })
