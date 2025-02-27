@@ -1,11 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../features/auth/authSlice";
-import menuReducer from "../features/menu/menuSlice";
-import userReducer from "../features/user/userSlice";
-import burgerMealReducer from "../features/burgerMeal/burgerMealSlice";
-import selectedMenuReducer from "../features/selectedMenu/selectedMenu";
-import snacksReducer from "../features/snacks/snacksSlice";
-import dessertReducer from "../features/desserts/dessertSlice";
+import {
+  authReducer,
+  menuReducer,
+  userReducer,
+  burgerMealReducer,
+  burgerReducer,
+  burgerWrapsReducer,
+  selectedMenuReducer,
+  snacksReducer,
+  dessertReducer,
+  orderReducer,
+  cartReducer,
+  mealReducer,
+  beveragesReducer,
+  faqSupportReducer,
+} from "@/utils/reducer";
 
 export const store = configureStore({
   reducer: {
@@ -14,8 +23,15 @@ export const store = configureStore({
     user: userReducer,
     burgerMeal: burgerMealReducer,
     selectedMenu: selectedMenuReducer,
-    snacks: snacksReducer,
-    dessert:dessertReducer
+    snack: snacksReducer,
+    dessert: dessertReducer,
+    burger: burgerReducer,
+    order: orderReducer,
+    cart: cartReducer,
+    meal: mealReducer,
+    beverage: beveragesReducer,
+    burgerWraps: burgerWrapsReducer,
+    FaqSupport: faqSupportReducer,
   },
 });
 

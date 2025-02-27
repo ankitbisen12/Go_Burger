@@ -1,18 +1,25 @@
-import { Text, ScrollView } from "react-native";
 import React from "react";
-import { FAQData } from "@/constants/data";
+import { FlatList, Text, View } from "react-native";
 import FAQItem from "@/components/utils/FAQItem";
+import { useSelector } from "react-redux";
+import { selectFAQ } from "@/features/FAQSupport/FAQSupportSlice";
 
 const FaqAndSupport = () => {
+  const FAQData = useSelector(selectFAQ);
+
   return (
-    <ScrollView className="p-4 mb-4" showsVerticalScrollIndicator={false}>
-      <Text className="text-xl font-rubik-bold uppercase text-amber-950 p-2">
-        How can we help?
+    <View className="p-4 mb-4">
+      <Text className="text-xl font-rubik-bold uppercase text-amber-950 p-2 ">
+        How can we help you?
       </Text>
-      {FAQData.map((item, index) => (
-        <FAQItem {...item} />
-      ))}
-    </ScrollView>
+      <FlatList
+        data={FAQData}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <FAQItem {...item} />}
+        showsVerticalScrollIndicator={false}
+        contentContainerClassName="flex pr-2 py-2"
+      />
+    </View>
   );
 };
 

@@ -72,6 +72,7 @@ export function signOut() {
       // console.log(response);
       if (response.ok) {
         // const data = await response.json();
+        
         resolve({ data: "success" });
       } else {
         const error = await response.text();

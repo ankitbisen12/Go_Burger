@@ -57,7 +57,7 @@ export const snackSlice = createSlice({
       })
       .addCase(fetchAllSnacksAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.snacks = action.payload;
+        state.snacks = action.payload.snacks;
       })
       .addCase(fetchSnackByIdAsync.pending, (state) => {
         state.status = "loading";

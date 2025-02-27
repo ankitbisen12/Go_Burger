@@ -20,8 +20,8 @@ const FAQItem = ({
         } shadow-md `}
         onPress={() => setIsCollapsed(!isCollapsed)}
       >
-        <View className="flex flex-row items-center justify-between">
-          <Text className="text-black text-lg font-rubik-medium">
+        <View className="flex flex-row items-center justify-between px-2">
+          <Text className="text-black text-lg font-rubik-medium ">
             {question}
           </Text>
           <Entypo name="chevron-down" size={20} color="black" />

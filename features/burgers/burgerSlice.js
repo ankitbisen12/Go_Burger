@@ -4,7 +4,7 @@ import {
   fetchBurgerById,
   createBurger,
   updateBurger,
-} from "./burgerWrapsAPI";
+} from "./burgerAPI";
 
 const initialState = {
   burgers: [],
@@ -57,7 +57,7 @@ export const burgerSlice = createSlice({
       })
       .addCase(fetchAllBurgerAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.burgers = action.payload;
+        state.burgers = action.payload.burgers;
       })
       .addCase(fetchBurgerByIdAsync.pending, (state) => {
         state.status = "loading";

@@ -1,9 +1,8 @@
-import { Stack, useRouter } from "expo-router";
+import { Stack, useRouter, usePathname } from "expo-router";
 import { SplashScreen } from "expo-router";
 import "./global.css";
 import React, { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
-import { ActivityIndicator } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "../store/store";
@@ -17,6 +16,7 @@ function RootLayoutContent() {
   const user = useSelector(selectLoggedInUser);
   const [isNavigationReady, setIsNavigationReady] = useState<Boolean>(false);
   const router = useRouter();
+  const pathname = usePathname();
   const [fontsLoaded] = useFonts({
     "Rubik-Bold": require("../assets/fonts/Rubik-Bold.ttf"),
     "Rubik-ExtraBold": require("../assets/fonts/Rubik-ExtraBold.ttf"),
@@ -65,10 +65,19 @@ function RootLayoutContent() {
     return null;
   }
 
+  const hideHeaderRoutes = ["/sign-in", "/login", "/signup"];
+
   return (
     <React.Fragment>
       <StatusBar style="dark" />
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack
+        screenOptions={{
+          headerShown:
+            pathname === "/FAQSupport" ||
+            pathname === "/Contact" ||
+            pathname === "/Addresses",
+        }}
+      />
     </React.Fragment>
   );
 }

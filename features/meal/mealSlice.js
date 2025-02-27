@@ -52,7 +52,7 @@ export const mealSlice = createSlice({
       })
       .addCase(fetchAllMealsAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.meals = action.payload;
+        state.meals = action.payload.meals;
       })
       .addCase(fetchMealByIdAsync.pending, (state) => {
         state.status = "loading";

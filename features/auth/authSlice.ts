@@ -98,9 +98,9 @@ export const authSlice = createSlice({
         state.status = "idle";
         state.loggedInUserToken = action.payload.token;
 
-        AsyncStorage.setItem("token", action.payload.token)
-          .then(() => console.log("Token saved to AsyncStorage"))
-          .catch((error) => console.error("Failed to store token:", error));
+        // AsyncStorage.setItem("token", action.payload.token)
+        //   .then(() => console.log("Token saved to AsyncStorage"))
+        //   .catch((error) => console.error("Failed to store token:", error));
       })
       .addCase(loginUserAsync.rejected, (state, action) => {
         state.status = "idle";

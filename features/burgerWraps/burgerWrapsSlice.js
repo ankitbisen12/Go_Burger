@@ -46,7 +46,7 @@ export const updateBurgerWrapsAsync = createAsyncThunk(
   }
 );
 
-export const mealSlice = createSlice({
+export const burgerSlice = createSlice({
   name: "burgerWraps",
   initialState,
   reducers: {},
@@ -57,7 +57,7 @@ export const mealSlice = createSlice({
       })
       .addCase(fetchAllBurgerWrapssAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.burgerWraps = action.payload;
+        state.burgerWraps = action.payload.burgerWraps;
       })
       .addCase(fetchBurgerWrapsByIdAsync.pending, (state) => {
         state.status = "loading";
@@ -91,4 +91,4 @@ export const selectedBurgerWraps = (state) =>
   state.burgerWraps.selectBurgerWraps;
 export const selectStatus = (state) => state.burgerWraps.status;
 
-export default mealSlice.reducer;
+export default burgerSlice.reducer;

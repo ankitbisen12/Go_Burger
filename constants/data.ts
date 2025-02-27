@@ -12,7 +12,7 @@ export const menu = [
     title: "Saved Addresses",
     icon: icons.location,
     color: "#FEA123",
-    link: "/",
+    link: "/Addresses",
   },
   {
     title: "Payment Methods",
@@ -27,7 +27,7 @@ export const settings = [
     title: "Contact Us",
     icon: icons.msg,
     color: "#FEA123",
-    link: "/",
+    link: "/Contact",
   },
   {
     title: "FAQs & Support",

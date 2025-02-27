@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,12 +13,23 @@ import images from "@/constants/images";
 import Feather from "@expo/vector-icons/Feather";
 import SettingsItem from "@/components/utils/SettingsItem";
 import { menu, settings } from "@/constants/data";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUserInfo } from "@/features/user/userSlice";
+import { signOutAsync } from "@/features/auth/authSlice";
+import type { AppDispatch } from "@/store/store";
+import { removeToken } from "@/utils/util";
+import Modal from "@/common/ModalConfirm";
 
 const Profile = () => {
+  const [showModal, setShowModal] = useState(false);
   const user = useSelector(selectUserInfo);
-  const handleLogout = () => {};
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleLogout = () => {
+    dispatch(signOutAsync());
+    removeToken();
+    setShowModal(false);
+  };
 
   return (
     <SafeAreaView className="h-full">
@@ -81,7 +92,7 @@ const Profile = () => {
         <View className="flex flex-col mt-6  pt-5">
           <Pressable
             className="py-3 px-4 border w-[40%] border-red-500 rounded-full"
-            onPress={handleLogout}
+            onPress={() => setShowModal(true)}
           >
             <View className="flex flex-row items-center gap-3">
               <Image
@@ -96,6 +107,12 @@ const Profile = () => {
           </Pressable>
         </View>
       </ScrollView>
+
+      <Modal
+        showModal={showModal}
+        onCancel={() => setShowModal(false)}
+        handleSubmit={handleLogout}
+      />
     </SafeAreaView>
   );
 };

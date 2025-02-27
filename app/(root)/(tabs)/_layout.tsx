@@ -8,6 +8,13 @@ import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../../store/store";
 import { fetchAllMenusAsync } from "@/features/menu/menuSlice";
 import { fetchAllBurgerMealsAsync } from "@/features/burgerMeal/burgerMealSlice";
+import { fetchAllBurgerWrapssAsync } from "@/features/burgerWraps/burgerWrapsSlice";
+import { fetchAllBurgerAsync } from "@/features/burgers/burgerSlice";
+import { fetchAllDessertsAsync } from "@/features/desserts/dessertSlice";
+import { fetchAllSnacksAsync } from "@/features/snacks/snacksSlice";
+import { fetchAllBeveragesAsync } from "@/features/Beverages/BeveragesSlice";
+import { fetchAllMealsAsync } from "@/features/meal/mealSlice";
+import { fetchAllFAQSupportAsync } from "@/features/FAQSupport/FAQSupportSlice";
 
 export default function TabsLayout() {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,6 +22,13 @@ export default function TabsLayout() {
   useEffect(() => {
     dispatch(fetchAllMenusAsync());
     dispatch(fetchAllBurgerMealsAsync());
+    dispatch(fetchAllBurgerWrapssAsync());
+    dispatch(fetchAllBurgerAsync());
+    dispatch(fetchAllDessertsAsync());
+    dispatch(fetchAllSnacksAsync());
+    dispatch(fetchAllBeveragesAsync());
+    dispatch(fetchAllMealsAsync());
+    dispatch(fetchAllFAQSupportAsync());
   }, [dispatch]);
 
   return (

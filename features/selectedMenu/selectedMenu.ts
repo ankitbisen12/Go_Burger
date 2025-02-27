@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "@/store/store";
 
 interface SelectedMenuState {
   selectMenu: string | null;
@@ -19,5 +20,5 @@ const selectedMenuSlice = createSlice({
 });
 
 export const { setSelectedMenu } = selectedMenuSlice.actions;
-export const selectedMenuu = (state: SelectedMenuState) => state.selectMenu;
+export const selectedMenuu = (state: RootState) => state.selectedMenu.selectMenu;
 export default selectedMenuSlice.reducer;
